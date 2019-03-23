@@ -50,6 +50,11 @@ public class rsa_screen extends javax.swing.JFrame {
         });
 
         AES.setText("AES");
+        AES.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AESActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("...");
 
@@ -109,6 +114,13 @@ public class rsa_screen extends javax.swing.JFrame {
         ScreenEncryption enc_scr = new ScreenEncryption();
         enc_scr.setVisible(true);
     }//GEN-LAST:event_RSAActionPerformed
+
+    private void AESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AESActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        aes_screen aes_scr = new aes_screen();
+        aes_scr.setVisible(true);
+    }//GEN-LAST:event_AESActionPerformed
 
     /**
      * @param args the command line arguments

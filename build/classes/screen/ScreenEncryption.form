@@ -200,9 +200,6 @@
     </Container>
     <Component class="javax.swing.JButton" name="Browser">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="D:\MMANM\Assignment 1\JFileChooserDemo\asset\Untitled (2).png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="..."/>
       </Properties>
       <Events>

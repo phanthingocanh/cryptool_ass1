@@ -86,7 +86,6 @@ public class ScreenEncryption extends javax.swing.JFrame {
         rsa_outputMessage.setRows(5);
         jScrollPane1.setViewportView(rsa_outputMessage);
 
-        Browser.setIcon(new javax.swing.ImageIcon("D:\\MMANM\\Assignment 1\\JFileChooserDemo\\asset\\Untitled (2).png")); // NOI18N
         Browser.setText("...");
         Browser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
