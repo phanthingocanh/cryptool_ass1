@@ -1,0 +1,5 @@
+To perform encrypt/decrypt using RSA, choose Asymmetric.
+
+To perform encrypt/decrypt using AES/DES/3DES, choose Symmetric.
+
+Contact us at nguyengiapphuongduy@gmail.com

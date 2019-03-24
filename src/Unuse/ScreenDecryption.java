@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import javax.swing.JFileChooser;
 //import screen.ScreenEncryption.MyCustomFilter;
-import screen.ScreenEncryption;
+import screen.AsymmetricForm;
 
 /**
  *
@@ -211,7 +211,7 @@ public class ScreenDecryption extends javax.swing.JFrame {
         // TODO add your handling code here:
 //        textarea.setText("");
         this.dispose();
-        ScreenEncryption enc_scr = new ScreenEncryption();
+        AsymmetricForm enc_scr = new AsymmetricForm();
         enc_scr.setVisible(true);
         //        textarea.setText(Encryptions.encrypt());
     }//GEN-LAST:event_AsymmetricActionPerformed

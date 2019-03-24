@@ -1,8 +1,0 @@
-Cryptographic Application written by DNA Team, HCMUT.
-
-Version 1.0
-
-Authors:
-Phan Thi Ngoc Anh 1610129
-Nguyen Giap Phuong Duy 1610473
-Nguyen Thi Thanh Nhat 1612390

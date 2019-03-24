@@ -39,7 +39,6 @@ public class SymmetricForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        this.getContentPane().setBackground(new java.awt.Color(204, 228, 235));
         bgrAlgorithm = new javax.swing.ButtonGroup();
         fileChooser = new javax.swing.JFileChooser();
         btnBack = new javax.swing.JButton();
@@ -64,11 +63,10 @@ public class SymmetricForm extends javax.swing.JFrame {
         decryptLink = new javax.swing.JTextField();
         btnOpen = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        textarea = new javax.swing.JTextArea();
+        textArea = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 198, 168));
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("logo.png")));
         setResizable(false);
 
@@ -144,7 +142,7 @@ public class SymmetricForm extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Init Vector:");
-        jLabel4.setPreferredSize(new java.awt.Dimension(80, 30));
+        jLabel4.setPreferredSize(new java.awt.Dimension(100, 30));
 
         ivInput.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         ivInput.setPreferredSize(new java.awt.Dimension(600, 30));
@@ -193,13 +191,15 @@ public class SymmetricForm extends javax.swing.JFrame {
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(600, 150));
 
-        textarea.setColumns(20);
-        textarea.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        textarea.setRows(5);
-        jScrollPane1.setViewportView(textarea);
+        textArea.setEditable(false);
+        textArea.setColumns(20);
+        textArea.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        textArea.setRows(5);
+        jScrollPane1.setViewportView(textArea);
 
         jLabel6.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
         jLabel6.setText("DNA CRYPTOOL");
+        jLabel6.setMinimumSize(new java.awt.Dimension(240, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -207,11 +207,6 @@ public class SymmetricForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(205, 205, 205)
-                        .addComponent(jLabel6))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(230, 230, 230)
                         .addComponent(btnEncrypt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -224,7 +219,8 @@ public class SymmetricForm extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(5, 5, 5)
@@ -255,19 +251,26 @@ public class SymmetricForm extends javax.swing.JFrame {
                                 .addGap(5, 5, 5)
                                 .addComponent(cbHex, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
+                                .addGap(5, 5, 5)
                                 .addComponent(ivInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(5, 5, 5)
                                 .addComponent(cbMode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(20, 20, 20))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(305, 305, 305)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(305, 305, 305))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBrowse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -311,26 +314,28 @@ public class SymmetricForm extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         this.dispose();
-        rsa_screen enc_scr = new rsa_screen();
+        DNAScreen enc_scr = new DNAScreen();
         enc_scr.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnEncryptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncryptActionPerformed
-        textarea.append("Encrypting...\n");
+        textArea.append("Encrypting...\n");
         new Thread() {
             @Override
             public void run() {
-                construct(true);
+                runCrypt(true);
+                
             }
         }.start();
     }//GEN-LAST:event_btnEncryptActionPerformed
 
     private void btnDecryptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDecryptActionPerformed
-        textarea.append("Decrypting...\n");
+        textArea.append("Decrypting...\n");
         new Thread() {
             @Override
             public void run() {
-                construct(false);
+                runCrypt(false);
+                this.interrupt();
             }
         }.start();
     }//GEN-LAST:event_btnDecryptActionPerformed
@@ -365,7 +370,7 @@ public class SymmetricForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnOpenActionPerformed
 
-    private void construct(boolean encrypt) {
+    private void runCrypt(boolean encrypt) {
         String algorithm = "AES128";
         Enumeration<AbstractButton> e = bgrAlgorithm.getElements();
         while (e.hasMoreElements()) {
@@ -383,19 +388,19 @@ public class SymmetricForm extends javax.swing.JFrame {
         byte[] key = null;
 
         if (txtPath.getText().length() == 0) {
-            textarea.append("You must choose a file!\n");
+            textArea.append("You must choose a file!\n");
             return;
         }
         if (keyInput.getText().length() == 0) {
-            textarea.append("You must insert key!\n");
+            textArea.append("You must insert key!\n");
             return;
         }
         if (!(new File(txtPath.getText()).exists())) {
-            textarea.append("File not found!\n");
+            textArea.append("File not found!\n");
             return;
         }
         if (!encrypt && !txtPath.getText().endsWith("encrypted")) {
-            textarea.append("Can't decrypt this file (file isn't end with .encrypted)!\n");
+            textArea.append("Can't decrypt this file (file isn't end with .encrypted)!\n");
             return;
         }
 
@@ -424,10 +429,10 @@ public class SymmetricForm extends javax.swing.JFrame {
         if (encrypt) {
             ivInput.setText(ByteUtil.toHexString(cipherCore.getInitVector()));
             decryptLink.setText(cipherCore.encrypt(txtPath.getText()));
-            textarea.append("Encryption success in " + (System.currentTimeMillis() - startTime) + " ms\n");
+            textArea.append("Encryption success in " + (System.currentTimeMillis() - startTime) + " ms\n");
         } else {
             decryptLink.setText(cipherCore.decrypt(txtPath.getText()));
-            textarea.append("Decryption success in " + (System.currentTimeMillis() - startTime) + " ms\n");
+            textArea.append("Decryption success in " + (System.currentTimeMillis() - startTime) + " ms\n");
         }
 
     }
@@ -492,7 +497,7 @@ public class SymmetricForm extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField keyInput;
-    private javax.swing.JTextArea textarea;
+    private javax.swing.JTextArea textArea;
     private javax.swing.JTextField txtPath;
     // End of variables declaration//GEN-END:variables
 }

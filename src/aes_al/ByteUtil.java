@@ -51,7 +51,7 @@ public class ByteUtil {
      * @param algorithm the string representation of the algorithm Supported
      * algorithms: MD2, MD5, SHA-1, SHA-224, SHA-256, SHA-384, SHA-512
      * @param len length of the output
-     * @return 16 bytes hashed output
+     * @return <code>len</code> bytes hashed output
      */
     public static byte[] digest(byte[] in, String algorithm, int len) {
         try {

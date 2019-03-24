@@ -34,6 +34,7 @@ public class HashForm extends javax.swing.JFrame {
     private void initComponents() {
 
         fileChooser = new javax.swing.JFileChooser();
+        jLabel0 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         hash = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -46,10 +47,14 @@ public class HashForm extends javax.swing.JFrame {
         output2 = new javax.swing.JTextField();
         btnCompare = new javax.swing.JButton();
         lblOutput = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("logo.png")));
+        setResizable(false);
+
+        jLabel0.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
+        jLabel0.setText("DNA CRYPTOOL");
+        jLabel0.setPreferredSize(new java.awt.Dimension(240, 40));
 
         btnBack.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnBack.setText("BACK");
@@ -125,9 +130,6 @@ public class HashForm extends javax.swing.JFrame {
         lblOutput.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblOutput.setPreferredSize(new java.awt.Dimension(100, 30));
 
-        jLabel6.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
-        jLabel6.setText("DNA CRYPTOOL");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,11 +138,6 @@ public class HashForm extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(205, 205, 205)
-                        .addComponent(jLabel6)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -158,8 +155,13 @@ public class HashForm extends javax.swing.JFrame {
                                         .addComponent(txtPath2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(5, 5, 5)
                                         .addComponent(btnBrowse2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(output2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(10, 10, 10))
+                                    .addComponent(output2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(10, 10, 10))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(205, 205, 205)
+                        .addComponent(jLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(295, 295, 295))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(315, 315, 315)
                 .addComponent(hash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -167,18 +169,18 @@ public class HashForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(365, 365, 365)
                 .addComponent(btnCompare, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
+                .addGap(130, 130, 130)
                 .addComponent(lblOutput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(135, 135, 135))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(20, 20, 20)
+                    .addComponent(jLabel0, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addComponent(hash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -207,7 +209,7 @@ public class HashForm extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         this.dispose();
-        rsa_screen enc_scr = new rsa_screen();
+        DNAScreen enc_scr = new DNAScreen();
         enc_scr.setVisible(true);
     }//GEN-LAST:event_btnBackActionPerformed
 
@@ -215,6 +217,7 @@ public class HashForm extends javax.swing.JFrame {
         int i = hash.getSelectedIndex();
         byte[] out = ByteUtil.digestFile(txtPath.getText(), hash.getModel().getElementAt(i));
         output.setText(ByteUtil.toHexString(out));
+        lblOutput.setText("");
     }
 
     private void btnBrowse1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowse1ActionPerformed
@@ -251,7 +254,7 @@ public class HashForm extends javax.swing.JFrame {
         if (txtPath1.getText().length() > 0) {
             applyHash(txtPath1, output1);
         }
-        if (txtPath1.getText().length() > 0) {
+        if (txtPath2.getText().length() > 0) {
             applyHash(txtPath2, output2);
         }
     }//GEN-LAST:event_hashActionPerformed
@@ -298,9 +301,9 @@ public class HashForm extends javax.swing.JFrame {
     private javax.swing.JButton btnCompare;
     private javax.swing.JFileChooser fileChooser;
     private javax.swing.JComboBox<String> hash;
+    private javax.swing.JLabel jLabel0;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel lblOutput;
     private javax.swing.JTextField output1;
     private javax.swing.JTextField output2;
