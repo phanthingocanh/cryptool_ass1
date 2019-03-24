@@ -40,6 +40,18 @@ public class RSA_KeyGen {
         this.e = e;
     }
 
+    public BigInteger getn(){
+        return this.n;
+    }
+    
+    public BigInteger getd(){
+        return this.d;
+    }
+    
+    public BigInteger gete(){
+        return this.e;
+    }
+    
     public static void fromFile(String path, RSA_KeyComplete onResultCallback, DialogBox.OnCancelCallback onCancelCallback)
     {
         FileC f = FileC.openToRead(path);

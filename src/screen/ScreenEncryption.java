@@ -12,6 +12,7 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.math.BigInteger;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import rsa.CryptResult;
@@ -429,7 +430,18 @@ public class ScreenEncryption extends javax.swing.JFrame {
                     DialogBox.passwordCreateDialog("Encrypt you key", result1 ->
                             {
                                 String p = result;
+                                String p1 = p;
+                                String p2 = p;
                                 if (!p.endsWith(".rsk")) p += ".rsk";
+                                if (!p1.endsWith(".publickey")) p1 += ".publickey";
+                                if (!p2.endsWith(".privatekey")) p2 += ".privatekey";
+                                BigInteger vanull = rsa_keyGen.getd().multiply(rsa_keyGen.getd());
+
+                                RSA_KeyGen keypublic = new RSA_KeyGen(64*8,rsa_keyGen.getn(),rsa_keyGen.gete(),vanull);
+                                keypublic.saveToFile(p1, result1);
+                                RSA_KeyGen keyprivate = new RSA_KeyGen(64*8,rsa_keyGen.getn(),vanull,rsa_keyGen.getd());
+                                keyprivate.saveToFile(p2, result1);
+
                                 rsa_keyGen.saveToFile(p, result1);
                                 rsa_outputMessage.append(hr);
                                 rsa_outputMessage.append("Exported. Save to "+p+"\n");
