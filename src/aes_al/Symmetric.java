@@ -48,7 +48,7 @@ public class Symmetric {
 
     public void setAlgorithm(String a) {
         SecureRandom random = new SecureRandom();
-        if ("DES".equals(a)) {
+        if ("DES".equals(a) || "DESede".equals(a)) {
             this._algorithm = a;
             this._initVector = new byte[8];
             random.nextBytes(this._initVector);
@@ -96,16 +96,22 @@ public class Symmetric {
         }
         if ("AES".equals(this._algorithm.substring(0, 3))) {
             int algorithm = Integer.parseInt(_algorithm.substring(3)) / 8;
-            if (key.length == algorithm) {
+            if (key.length == algorithm) { // 
                 this._key = key;
             } else {
                 this._key = ByteUtil.digest(key, "SHA-256", algorithm);
             }
-        } else {
+        } else if ("DES".equals(this._algorithm)) {
             if (key.length == 8) {
                 this._key = key;
             } else {
                 this._key = ByteUtil.digest(key, "SHA-256", 8);
+            }
+        } else { // DES-EDE
+            if (key.length == 24) {
+                this._key = key;
+            } else {
+                this._key = ByteUtil.digest(key, "SHA-256", 24);
             }
         }
     }
@@ -120,6 +126,7 @@ public class Symmetric {
 
     private Cipher getCipher(int cipherMode, byte[] key) {
         String algorithm = this._algorithm.substring(0, 3);
+        if ("DESede".equals(this._algorithm)) algorithm = "DESede";
         try {
             if ("CBC".equals(_mode)) {
                 SecretKeySpec secretKeySpec = new SecretKeySpec(key, algorithm);
