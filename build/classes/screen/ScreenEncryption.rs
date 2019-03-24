@@ -1,2 +1,0 @@
-screen.ScreenEncryption
-screen.MyCustomFilter
