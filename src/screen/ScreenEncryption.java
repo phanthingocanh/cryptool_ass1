@@ -63,7 +63,8 @@ public class ScreenEncryption extends javax.swing.JFrame {
         Export = new javax.swing.JButton();
         encrypt = new javax.swing.JButton();
         decrypt = new javax.swing.JButton();
-        home = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         fileChooser.setCurrentDirectory(new java.io.File("C:\\Users\\NGOC ANH\\Desktop"));
         fileChooser.setDialogTitle("Open");
@@ -81,7 +82,7 @@ public class ScreenEncryption extends javax.swing.JFrame {
         setTitle("CryptTool");
         setBackground(new java.awt.Color(255, 204, 204));
         setForeground(java.awt.Color.pink);
-        setIconImage( Toolkit.getDefaultToolkit().getImage(getClass().getResource("logo.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("logo.png")));
 
         rsa_outputMessage.setColumns(20);
         rsa_outputMessage.setRows(5);
@@ -189,12 +190,17 @@ public class ScreenEncryption extends javax.swing.JFrame {
             }
         });
 
-        home.setText("HOME");
-        home.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnBack.setText("BACK");
+        btnBack.setPreferredSize(new java.awt.Dimension(80, 40));
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
+
+        jLabel6.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
+        jLabel6.setText("DNA CRYPTOOL");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -243,20 +249,27 @@ public class ScreenEncryption extends javax.swing.JFrame {
                     .addComponent(Browser, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(78, 78, 78))
             .addGroup(layout.createSequentialGroup()
-                .addGap(369, 369, 369)
-                .addComponent(home)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 729, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 729, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(205, 205, 205)
+                        .addComponent(jLabel6)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(Browser, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -265,9 +278,6 @@ public class ScreenEncryption extends javax.swing.JFrame {
                             .addComponent(open, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 6, Short.MAX_VALUE)
-                        .addComponent(home)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(linkfile1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -275,7 +285,7 @@ public class ScreenEncryption extends javax.swing.JFrame {
                             .addComponent(encrypt))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(linkfile2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(140, 140, 140)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Export)
                     .addComponent(Import)
@@ -298,6 +308,7 @@ public class ScreenEncryption extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void fileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileChooserActionPerformed
@@ -523,16 +534,15 @@ public class ScreenEncryption extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_decryptMouseClicked
 
-    private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        rsa_screen enc_scr = new rsa_screen();
-        enc_scr.setVisible(true);
-    }//GEN-LAST:event_homeActionPerformed
-
     private void dTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dTfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dTfActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        this.dispose();
+        rsa_screen enc_scr = new rsa_screen();
+        enc_scr.setVisible(true);
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -579,18 +589,19 @@ public class ScreenEncryption extends javax.swing.JFrame {
     private javax.swing.JButton Export;
     private javax.swing.JButton Generate;
     private javax.swing.JButton Import;
+    private javax.swing.JButton btnBack;
     private javax.swing.JTextField dTf;
     private javax.swing.JButton decrypt;
     private javax.swing.JTextField eTf;
     private javax.swing.JButton encrypt;
     private javax.swing.JFileChooser fileChooser;
     private javax.swing.JFileChooser fileChooser1;
-    private javax.swing.JButton home;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private java.awt.TextField linkfile1;
     private java.awt.TextField linkfile2;
