@@ -6,6 +6,13 @@
 package screen;
 
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -30,37 +37,61 @@ public class rsa_screen extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        RSA = new javax.swing.JButton();
-        AES = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnRSA = new javax.swing.JButton();
+        btnAES = new javax.swing.JButton();
+        btnHash = new javax.swing.JButton();
+        btnHelp = new javax.swing.JButton();
+        btnAbout = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setIconImage( Toolkit.getDefaultToolkit().getImage(getClass().getResource("logo.png")));
+        setLocation(new java.awt.Point(100, 100));
 
         jLabel1.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
         jLabel1.setText("DNA CRYPTOOL");
 
-        RSA.setText("RSA");
-        RSA.addActionListener(new java.awt.event.ActionListener() {
+        btnRSA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnRSA.setText("Asymmetric");
+        btnRSA.setPreferredSize(new java.awt.Dimension(140, 30));
+        btnRSA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RSAActionPerformed(evt);
+                btnRSAActionPerformed(evt);
             }
         });
 
-        AES.setText("Symmetric");
-        AES.addActionListener(new java.awt.event.ActionListener() {
+        btnAES.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnAES.setText("Symmetric");
+        btnAES.setPreferredSize(new java.awt.Dimension(140, 30));
+        btnAES.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AESActionPerformed(evt);
+                btnAESActionPerformed(evt);
             }
         });
 
-        jButton3.setText("...");
+        btnHash.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnHash.setText("Hash");
+        btnHash.setPreferredSize(new java.awt.Dimension(140, 30));
+        btnHash.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHashActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("Help");
+        btnHelp.setText("Help");
+        btnHelp.setPreferredSize(new java.awt.Dimension(100, 30));
+        btnHelp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHelpActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("About us");
+        btnAbout.setText("About us");
+        btnAbout.setPreferredSize(new java.awt.Dimension(100, 30));
+        btnAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAboutActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,58 +100,94 @@ public class rsa_screen extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4))
+                        .addGap(10, 10, 10)
+                        .addComponent(btnHelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(220, 220, 220)
+                        .addComponent(btnAbout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(jLabel1)
-                        .addGap(0, 60, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(RSA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(AES, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(154, 154, 154))
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnHash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAES, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRSA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(50, 50, 50)
                 .addComponent(jLabel1)
-                .addGap(48, 48, 48)
-                .addComponent(RSA)
-                .addGap(18, 18, 18)
-                .addComponent(AES)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addComponent(btnRSA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(btnAES, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(btnHash, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(btnAbout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnHelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RSAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RSAActionPerformed
+    private void btnRSAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRSAActionPerformed
         // TODO add your handling code here:
         this.dispose();
         ScreenEncryption enc_scr = new ScreenEncryption();
         enc_scr.setVisible(true);
-    }//GEN-LAST:event_RSAActionPerformed
+    }//GEN-LAST:event_btnRSAActionPerformed
 
-    private void AESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AESActionPerformed
+    private void btnAESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAESActionPerformed
         // TODO add your handling code here:
         this.dispose();
         SymmetricForm symmetricForm = new SymmetricForm();
         symmetricForm.setVisible(true);
-    }//GEN-LAST:event_AESActionPerformed
+    }//GEN-LAST:event_btnAESActionPerformed
+
+    private void btnHashActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHashActionPerformed
+        this.dispose();
+        HashForm hashForm = new HashForm();
+        hashForm.setVisible(true);
+    }//GEN-LAST:event_btnHashActionPerformed
+
+    private void btnHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHelpActionPerformed
+        try {
+            File file = new File("src\\document\\help.txt");
+            byte[] data;
+            try (FileInputStream fis = new FileInputStream(file)) {
+                data = new byte[(int) file.length()];
+                fis.read(data);
+            }
+            String content = new String(data, "UTF-8");
+            JOptionPane.showMessageDialog(null, content,
+                    "About", JOptionPane.PLAIN_MESSAGE);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnHelpActionPerformed
+
+    private void btnAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAboutActionPerformed
+        try {
+            File file = new File("src\\document\\about-us.txt");
+            byte[] data;
+            try (FileInputStream fis = new FileInputStream(file)) {
+                data = new byte[(int) file.length()];
+                fis.read(data);
+            }
+            String content = new String(data, "UTF-8");
+            JOptionPane.showMessageDialog(null, content,
+                    "About", JOptionPane.PLAIN_MESSAGE);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnAboutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,11 +225,11 @@ public class rsa_screen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AES;
-    private javax.swing.JButton RSA;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btnAES;
+    private javax.swing.JButton btnAbout;
+    private javax.swing.JButton btnHash;
+    private javax.swing.JButton btnHelp;
+    private javax.swing.JButton btnRSA;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
