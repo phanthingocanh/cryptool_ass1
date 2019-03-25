@@ -214,10 +214,23 @@ public class HashForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void applyHash(JTextField txtPath, JTextField output) {
-        int i = hash.getSelectedIndex();
-        byte[] out = ByteUtil.digestFile(txtPath.getText(), hash.getModel().getElementAt(i));
-        output.setText(ByteUtil.toHexString(out));
-        lblOutput.setText("");
+        output.setText("Hashing...");
+        boolean focus = hash.isFocusOwner();
+        hash.setEnabled(false);
+        new Thread() {
+            @Override
+            public void run() {
+                int i = hash.getSelectedIndex();
+                byte[] out = ByteUtil.digestFile(txtPath.getText(), hash.getModel().getElementAt(i));
+                output.setText(ByteUtil.toHexString(out));
+                hash.setEnabled(true);
+                if (focus) {
+                    hash.requestFocusInWindow();
+                }
+                lblOutput.setText("");
+                this.interrupt();
+            }
+        }.start();
     }
 
     private void btnBrowse1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowse1ActionPerformed

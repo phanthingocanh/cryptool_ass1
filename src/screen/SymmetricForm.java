@@ -103,7 +103,8 @@ public class SymmetricForm extends javax.swing.JFrame {
         bgrAlgorithm.add(jRadioButton1);
         jRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jRadioButton1.setSelected(true);
-        jRadioButton1.setText("AES128");
+        jRadioButton1.setText("AES-128");
+        jRadioButton1.setActionCommand("AES128");
         jRadioButton1.setPreferredSize(new java.awt.Dimension(100, 30));
 
         bgrAlgorithm.add(jRadioButton2);
@@ -254,23 +255,19 @@ public class SymmetricForm extends javax.swing.JFrame {
                                 .addGap(5, 5, 5)
                                 .addComponent(ivInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(5, 5, 5)
-                                .addComponent(cbMode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(cbMode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(305, 305, 305)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(305, 305, 305)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(305, 305, 305))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBrowse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -324,7 +321,6 @@ public class SymmetricForm extends javax.swing.JFrame {
             @Override
             public void run() {
                 runCrypt(true);
-                
             }
         }.start();
     }//GEN-LAST:event_btnEncryptActionPerformed
@@ -335,7 +331,6 @@ public class SymmetricForm extends javax.swing.JFrame {
             @Override
             public void run() {
                 runCrypt(false);
-                this.interrupt();
             }
         }.start();
     }//GEN-LAST:event_btnDecryptActionPerformed
@@ -371,7 +366,8 @@ public class SymmetricForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnOpenActionPerformed
 
     private void runCrypt(boolean encrypt) {
-        String algorithm = "AES128";
+        cipherCore = new Symmetric();
+        String algorithm = "AES128"; // default is AES128 before parsing arguments
         Enumeration<AbstractButton> e = bgrAlgorithm.getElements();
         while (e.hasMoreElements()) {
             AbstractButton b = e.nextElement();
@@ -425,14 +421,19 @@ public class SymmetricForm extends javax.swing.JFrame {
 
         cipherCore.initialize(algorithm, mode, iv, key);
 
-        long startTime = System.currentTimeMillis();
-        if (encrypt) {
-            ivInput.setText(ByteUtil.toHexString(cipherCore.getInitVector()));
-            decryptLink.setText(cipherCore.encrypt(txtPath.getText()));
-            textArea.append("Encryption success in " + (System.currentTimeMillis() - startTime) + " ms\n");
-        } else {
-            decryptLink.setText(cipherCore.decrypt(txtPath.getText()));
-            textArea.append("Decryption success in " + (System.currentTimeMillis() - startTime) + " ms\n");
+        try {
+            long startTime = System.currentTimeMillis();
+            if (encrypt) {
+                ivInput.setText(ByteUtil.toHexString(cipherCore.getInitVector()));
+                decryptLink.setText(cipherCore.encrypt(txtPath.getText()));
+                textArea.append("Encryption success in " + (System.currentTimeMillis() - startTime) + " ms\n");
+            } else {
+                decryptLink.setText(cipherCore.decrypt(txtPath.getText()));
+                textArea.append("Decryption success in " + (System.currentTimeMillis() - startTime) + " ms\n");
+            }
+        } catch (Exception x) {
+            x.printStackTrace();
+            textArea.append("Failed! Check the File, Algorithm, Key or Init Vector!\n");
         }
 
     }
@@ -441,7 +442,6 @@ public class SymmetricForm extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        cipherCore = new Symmetric();
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
