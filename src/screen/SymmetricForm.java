@@ -423,8 +423,8 @@ public class SymmetricForm extends javax.swing.JFrame {
 
         try {
             long startTime = System.currentTimeMillis();
+            ivInput.setText(ByteUtil.toHexString(cipherCore.getInitVector()));
             if (encrypt) {
-                ivInput.setText(ByteUtil.toHexString(cipherCore.getInitVector()));
                 decryptLink.setText(cipherCore.encrypt(txtPath.getText()));
                 textArea.append("Encryption success in " + (System.currentTimeMillis() - startTime) + " ms\n");
             } else {

@@ -72,7 +72,7 @@ public class Symmetric {
     }
 
     public void setInitVector(byte[] initVector) {
-        if (initVector == null) {
+        if (initVector == null || initVector.length == 0) {
             return;
         }
         if ("AES".equals(this._algorithm.substring(0, 3))) {
