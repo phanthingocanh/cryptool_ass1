@@ -194,7 +194,7 @@ public class SymmetricForm extends javax.swing.JFrame {
 
         textArea.setEditable(false);
         textArea.setColumns(20);
-        textArea.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        textArea.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         textArea.setRows(5);
         jScrollPane1.setViewportView(textArea);
 

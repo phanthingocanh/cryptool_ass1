@@ -1,6 +1,6 @@
 Cryptographic Application written by DNA Team, HCMUT.
-
 Version 1.0
+
 
 (Assignment 1)
 

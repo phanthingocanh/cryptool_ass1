@@ -1,5 +1,8 @@
 To perform encrypt/decrypt using RSA, choose Asymmetric.
-
 To perform encrypt/decrypt using AES/DES/3DES, choose Symmetric.
+To perform Hash checking using MD2/MD5/SHA, choose Hash.
+To read full version of how to use this application, read the report.
+
 
 Contact us at nguyengiapphuongduy@gmail.com
+DNA Team.

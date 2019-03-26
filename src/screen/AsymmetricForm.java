@@ -81,7 +81,6 @@ public class AsymmetricForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CryptTool");
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("logo.png")));
-        setPreferredSize(new java.awt.Dimension(850, 614));
         setResizable(false);
 
         btnBack.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -100,6 +99,7 @@ public class AsymmetricForm extends javax.swing.JFrame {
         jLabel1.setText("File Input:");
         jLabel1.setPreferredSize(new java.awt.Dimension(100, 30));
 
+        linkfile1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         linkfile1.setPreferredSize(new java.awt.Dimension(600, 30));
         linkfile1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +145,8 @@ public class AsymmetricForm extends javax.swing.JFrame {
         jLabel2.setText("Encrypted File:");
         jLabel2.setPreferredSize(new java.awt.Dimension(100, 30));
 
+        linkfile2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        linkfile2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         linkfile2.setPreferredSize(new java.awt.Dimension(600, 30));
         linkfile2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,6 +228,7 @@ public class AsymmetricForm extends javax.swing.JFrame {
         jScrollPane1.setPreferredSize(new java.awt.Dimension(600, 150));
 
         rsa_outputMessage.setColumns(20);
+        rsa_outputMessage.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         rsa_outputMessage.setRows(5);
         jScrollPane1.setViewportView(rsa_outputMessage);
 
@@ -299,12 +302,10 @@ public class AsymmetricForm extends javax.swing.JFrame {
                     .addComponent(decrypt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(open, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20))
+                    .addComponent(open, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(linkfile2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Import, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Export, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
