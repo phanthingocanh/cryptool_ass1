@@ -9,7 +9,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.security.SecureRandom;
-import java.util.Arrays;
 import javax.crypto.Cipher;
 import javax.crypto.CipherInputStream;
 import javax.crypto.CipherOutputStream;
@@ -126,7 +125,9 @@ public class Symmetric {
 
     private Cipher getCipher(int cipherMode, byte[] key) {
         String algorithm = this._algorithm.substring(0, 3);
-        if ("DESede".equals(this._algorithm)) algorithm = "DESede";
+        if ("DESede".equals(this._algorithm)) {
+            algorithm = "DESede";
+        }
         try {
             if ("CBC".equals(_mode)) {
                 SecretKeySpec secretKeySpec = new SecretKeySpec(key, algorithm);
@@ -174,16 +175,31 @@ public class Symmetric {
                 CipherOutputStream cipherOut = new CipherOutputStream(fileOut, cipher);) {
             int read;
             byte[] b = new byte[BLOCK_SIZE];
-            while ((read = fileIn.read(b)) != -1) {
-                if (read < BLOCK_SIZE) {
-                    b = cipher.doFinal(Arrays.copyOf(b, read));
-                    fileOut.write(b);
-                    fileOut.flush();
-                } else {
-                    cipherOut.write(b);
-                    cipherOut.flush();
+            File f = new File(fileName);
+
+            long fileSize = f.length();
+            if (fileSize % BLOCK_SIZE == 0) {
+                while (fileSize > 0) {
+                    fileIn.read(b);
+                    if (fileSize == BLOCK_SIZE) {
+                        b = cipher.doFinal(b, 0, BLOCK_SIZE);
+                        fileOut.write(b);
+                    } else {
+                        cipherOut.write(b);
+                    }
+                    fileSize -= BLOCK_SIZE;
+                }
+            } else {
+                while ((read = fileIn.read(b)) != -1) {
+                    if (read < BLOCK_SIZE) {
+                        b = cipher.doFinal(b, 0, read);
+                        fileOut.write(b);
+                    } else {
+                        cipherOut.write(b, 0, read);
+                    }
                 }
             }
+
             fileIn.close();
             fileOut.close();
             cipherOut.close();
